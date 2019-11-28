@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import CategoriesContainer from './CategoriesContainer'
 
 const BoardIndex = (props) => {
   const[boards, setBoards] = useState([])
@@ -17,7 +18,7 @@ const BoardIndex = (props) => {
     })
     .then(response => response.json())
     .then(boardBody => {
-      setParks(boardBody.boards)
+      setBoards(boardBody.boards)
       setCurrentUserId(boardBody.scope[0].id)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -29,6 +30,9 @@ const BoardIndex = (props) => {
       <h2 id="index-title">PopGeek Forums</h2>
       <h5>See the Categories below! Please Register to unlock more of the forum!</h5>
       </div>
+      <CategoriesContainer
+
+      />
     </div>
   )
 }
