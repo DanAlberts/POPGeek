@@ -5,7 +5,7 @@ const CategoriesContainer = (props) => {
   const[categories, setCategories] = useState([])
 
   useEffect(()=> {
-    fetch("/api/v1/categories")
+    fetch("/api/v1/boards/1/categories")
     .then((response)=> {
       if (response.ok) {
         return response
@@ -17,15 +17,23 @@ const CategoriesContainer = (props) => {
     })
     .then(response => response.json())
     .then(categoriesBody => {
-      setCategories(categoriesBody.categories)
+      setCategories(categoriesBody)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+
+  const categoriesList = categories.map(category => {
+    return(
+      <CategoryTile
+        key={category.id}
+        title={category.title}
+      />
+    )
+  })
   return(
     <div className="index">
-      <CategoryTile
-      />
+      {categoriesList}
     </div>
   )
 }

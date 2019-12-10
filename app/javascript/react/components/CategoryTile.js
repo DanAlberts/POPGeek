@@ -6,8 +6,10 @@ const CategoryTile = (props) => {
 
 
   return(
-    <div className="index">
-
+    <div className="category-title">
+      <h4>
+        <a>{props.title}</a>
+      </h4>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-class Api::V1::CategoriesController < ApiController
+class Api::V1::PostsController < ApiController
 
   def index
 
@@ -7,7 +7,7 @@ class Api::V1::CategoriesController < ApiController
   def show
 
   end
-  
+
   def create
 
   end
