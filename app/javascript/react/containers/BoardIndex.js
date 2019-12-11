@@ -6,7 +6,7 @@ const BoardIndex = (props) => {
   const[currentUserId, setCurrentUserId] = useState(null)
 
   useEffect(()=> {
-    fetch("/api/v1/boards/1")
+    fetch("/api/v1/boards")
     .then((response)=> {
       if (response.ok) {
         return response
@@ -24,16 +24,25 @@ const BoardIndex = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
-  return(
-    <div className="index">
-      <div className="index-top">
-      <h1 id="index-title">PopGeek Forums</h1>
-      <h5>See the Categories below! Please Register to unlock more of the forum!</h5>
-      </div>
-      <h2>{boards.title}</h2>
+    const boardList = boards.map(board => {
+    return(
+      <div className="board-title">
+      <h2 className="b-title">{board.title}</h2>
       <CategoriesContainer
 
       />
+      </div>
+    )
+  })
+
+  return(
+    <div className="index">
+      <div className="index-top">
+        <h5>See the Categories below! Please Register to unlock more of the forum!</h5>
+      </div>
+      <div>
+        {boardList}
+      </div>
     </div>
   )
 }
