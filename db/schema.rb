@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_174431) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
+    t.string "description"
     t.bigint "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

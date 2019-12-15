@@ -10,6 +10,7 @@ const CategoryTile = (props) => {
       <h4>
         <a>{props.title}</a>
       </h4>
+      <h6>{props.description}</h6>
     </div>
   )
 }
