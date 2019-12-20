@@ -15,3 +15,31 @@
  *= require foundation_and_overrides
 
  */
+
+body {
+  background-color: rgb(61, 19, 61);
+  color: white;
+}
+.category-title {
+  background-color: rgb(65, 63, 63);
+  border: 1px solid rgb(2, 2, 2);
+  border-radius: 3px;
+  color: rgb(252, 252, 250);
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 4px;
+  padding-left: 5px;
+}
+.board-title {
+  background-color: rgb(92, 71, 92);
+  border: 1px solid rgb(2, 2, 2);
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.b-title {
+  background-color: rgb(70, 54, 70);
+  border: 1px solid rgb(2, 2, 2);
+  border-radius: 3px;
+}
