@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   get '/front_page', to: "site#index"
   get '/boards', to: "static_pages#index"
   get '/categories', to: "static_pages#index"
+  get '/categories/:id', to: "static_pages#index"  
 
     namespace :api do
     namespace :v1 do
       resources :profiles, only: [:index, :show, :create, :destroy]
       resources :boards, only: [:index, :show] do
         resources :categories, only: [:index, :show, :create, :destroy] do
-          resources :topics, only: [:index, :show, :create, :destroy] do
+          resources :topics, only: [:show, :create, :destroy] do
             resources :posts, only: [:create, :destroy]
           end
         end
