@@ -29,7 +29,6 @@ const CategoriesContainer = (props) => {
         key={category.id}
         title={category.title}
         description={category.description}
-        topics={category.topics.title}
       />
     )
   })
