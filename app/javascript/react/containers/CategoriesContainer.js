@@ -27,6 +27,7 @@ const CategoriesContainer = (props) => {
     return(
       <CategoryTile
         key={category.id}
+        id={category.id}
         title={category.title}
         description={category.description}
       />
