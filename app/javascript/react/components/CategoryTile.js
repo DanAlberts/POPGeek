@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-
+import { Link } from "react-router-dom"
 const CategoryTile = (props) => {
 
 
@@ -8,7 +8,9 @@ const CategoryTile = (props) => {
   return(
     <div className="category-title">
       <h4>
-        <a>{props.title}</a>
+        <Link to={`/categories/${props.id}`}>
+          {props.title}
+        </Link>
       </h4>
       <h6>{props.description}</h6>
     </div>

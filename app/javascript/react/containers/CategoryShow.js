@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import TopicTile from '../components/TopicTile'
+import { Link } from "react-router-dom"
 
-const TopicsContainer = (props) => {
+const CategoryShow = (props) => {
   const[topics, setTopics] = useState([])
   
   let categoryId = props.match.params.id
@@ -19,11 +20,12 @@ const TopicsContainer = (props) => {
     })
     .then(response => response.json())
     .then(topicsBody => {
-      setTopics(topicsBody)
+      setTopics(topicsBody.topics)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const newTopicPath=`/categories/${categoryId}/topics/new`
 
   const topicsList = topics.map(topic => {
     return(
@@ -33,11 +35,15 @@ const TopicsContainer = (props) => {
       />
     )
   })
+
   return(
     <div className="index">
       {topicsList}
+      <div>
+        <Link to={newTopicPath}>Create New Topic</Link>
+      </div>
     </div>
   )
 }
 
-export default TopicsContainer
+export default CategoryShow
