@@ -8,7 +8,10 @@ const TopicForm = (props) => {
   const[shouldRedirect, setShouldRedirect] = useState(false)
   const[newTopic, setNewTopic] = useState({
     title: "",
+    firstpost: ""
   })
+
+    let categoryId = props.match.params.id
 
   const handleFieldChange = event => {
     setNewTopic({
@@ -21,6 +24,7 @@ const TopicForm = (props) => {
     event.preventDefault()
     setNewTopic({
       title: "",
+      firstpost: ""
     })
     setErrors({})
   }
@@ -40,7 +44,7 @@ const TopicForm = (props) => {
     return _.isEmpty(submitErrors)
   }
 
-  const handleParkSubmit = (event) =>{
+  const handleTopicSubmit = (event) =>{
     event.preventDefault()
     if (!validForSubmission()){
       return
@@ -48,16 +52,20 @@ const TopicForm = (props) => {
 
     let payload = {
       title:newTopic.title,
+      firstpost:newTopic.firstpost
     }
 
     addNewTopic(payload)
     setNewTopic({
       title: "",
+      firstpost: ""
     })
   }
 
   const addNewTopic = payload => {
-    fetch("/api/v1/topics", {
+    const categoryId = props.match.params.id
+    console.log(categoryId)
+    fetch(`/api/v1/categories/${categoryId}/topics`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -83,16 +91,16 @@ const TopicForm = (props) => {
     .catch((error) => {console.error("error in fetch")
     })
   }
-
+  const redirect = `/categories/${categoryId}`
   if (shouldRedirect){
-    return <Redirect to="/topics" />
+    return <Redirect to={redirect} />
   }
 
 
   return(
-    <div className="form narrow-form" id="park-review-form">
+    <div className="form narrow-form" id="new-topic-form">
       <h2 id="review-form-title">Submit a Topic</h2>
-      <form onSubmit={handleTopicSubmit} className="new-parkform">
+      <form onSubmit={handleTopicSubmit} className="new-topicform">
         <ErrorList errors={errors} />
         <label>
           Topic Title
@@ -101,6 +109,15 @@ const TopicForm = (props) => {
             type="text"
             onChange={handleFieldChange}
             value={newTopic.title}
+          />
+        </label>
+        <label>
+          Topic First Post
+          <textarea
+            name="firstpost"
+            rows="20"
+            onChange={handleFieldChange}
+            value={newTopic.firstpost}
           />
         </label>
 

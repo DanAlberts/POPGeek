@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './Home'
 import BoardIndex from '../containers/BoardIndex';
 import CategoryShow from '../containers/CategoryShow';
+import TopicForm from '../containers/TopicForm';
 
 const App = (props) => {
   return(
@@ -12,6 +13,7 @@ const App = (props) => {
         <Route exact path="/" component={Home}/>
         <Route exact path="/boards" component={BoardIndex}/>
         <Route exact path="/categories/:id" component={CategoryShow}/>
+        <Route exact path="/categories/:id/topics/new" component={TopicForm}/>
       </Switch>
     </BrowserRouter>
   )
