@@ -31,7 +31,9 @@ const CategoryShow = (props) => {
     return(
       <TopicTile
         key={topic.id}
+        id={topic.id}
         title={topic.title}
+        categoryId={categoryId}
       />
     )
   })

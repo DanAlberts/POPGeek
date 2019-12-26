@@ -1,7 +1,10 @@
 class Api::V1::TopicsController < ApiController
 
   def show
-
+    topic = Topic.find(params[:id])
+    posts = topic.posts
+    render json: topic, serializer: Api::V1::TopicSerializer, scope: current_user
+    
   end
 
   def create

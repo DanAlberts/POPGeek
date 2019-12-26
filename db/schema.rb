@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_174431) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "username", null: false
     t.string "avatar_url"
     t.string "signature_url"
     t.integer "post_count"

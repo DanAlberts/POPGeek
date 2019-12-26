@@ -8,7 +8,7 @@ const TopicTile = (props) => {
   return(
     <div className="category-title">
       <h4>
-        <Link to={`/categories/${props.id}`}>
+        <Link to={`/categories/${props.categoryId}/topics/${props.id}`}>
           {props.title}
         </Link>
       </h4>

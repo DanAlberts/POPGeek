@@ -22,6 +22,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.inet     :last_sign_in_ip
 
       ## Customizable
+      t.string :username, null: false
       t.string :avatar_url
       t.string :signature_url
       t.integer :post_count
