@@ -5,9 +5,12 @@ import PostForm from "./PostForm"
 
 const TopicShow = (props) => {
   const[posts, setPosts] = useState([])
+
   
   let categoryId = props.match.params.id
   let topicId = props.match.params.tid
+
+
 
   useEffect(()=> {
     fetch(`/api/v1/boards/1/categories/${categoryId}/topics/${topicId}`)
@@ -29,6 +32,37 @@ const TopicShow = (props) => {
 
   const newPostPath=`/categories/${categoryId}/topics/${topicId}/posts/new`
 
+  const addNewPost = payload => {
+    fetch(`/api/v1/categories/${categoryId}/topics/${topicId}/posts`, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json"
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw (error);
+        }
+      })
+      .then((response) => {
+        return response.json()
+      })
+      .then((body) => {
+        setPosts(body.topic.posts)
+      })
+      .catch((error) => {
+        console.error("error in fetch")
+      })
+  }
+
+
+
   const PostList = posts.map(post => {
     return(
       <PostTile
@@ -39,6 +73,14 @@ const TopicShow = (props) => {
       />
     )
   })
+  const clearFields = (event) => {
+    event.preventDefault()
+    setNewPost({
+      content: ""
+    })
+    setErrors({})
+  }
+
 
   return(
     <div className="index">
@@ -47,6 +89,7 @@ const TopicShow = (props) => {
         <PostForm
           topicId={topicId}
           categoryId={categoryId}
+          addNewPost={addNewPost}
         />
       </div>
       <div>

@@ -5,13 +5,11 @@ import ErrorList from "./ErrorList"
 
 const PostForm = (props) => {
   const[errors, setErrors] = useState({})
-  // const[shouldRedirect, setShouldRedirect] = useState(false)
-  const[newPost, setNewPost] = useState({
-    post: ""
+  const [newPost, setNewPost] = useState({
+    content: ""
   })
 
-    // let categoryId = props.match.params.id
-    // let topicId = props.match.params.tid
+  let addNewPost = props.addNewPost
 
   const handleFieldChange = event => {
     setNewPost({
@@ -20,17 +18,9 @@ const PostForm = (props) => {
     })
   }
 
-  const clearFields = (event) => {
-    event.preventDefault()
-    setNewPost({
-      post: ""
-    })
-    setErrors({})
-  }
-
   const validForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["post"]
+    const requiredFields = ["content"]
     requiredFields.forEach(field => {
       if (newPost[field].trim() === "") {
         submitErrors = {
@@ -43,54 +33,20 @@ const PostForm = (props) => {
     return _.isEmpty(submitErrors)
   }
 
-  const handlePostSubmit = (event) =>{
+  const handlePostSubmit = (event) => {
     event.preventDefault()
-    if (!validForSubmission()){
+    if (!validForSubmission()) {
       return
     }
 
     let payload = {
-      post:newPost.post
+      content: newPost.content
     }
-
     addNewPost(payload)
     setNewPost({
-      post: ""
+      content: ""
     })
   }
-
-  const addNewPost = payload => {
-    fetch(`/api/v1/categories/${props.categoryId}/topics/${props.topicId}/posts`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        Accept: "application/json",
-        "Content-type": "application/json"
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw(error);
-      }
-    })
-    .then((response)=>{
-      return response.json()
-    })
-    .then((persistedData)=>{
-
-    })
-    .catch((error) => {console.error("error in fetch")
-    })
-  }
-  // const redirect = `/categories/${categoryId}`
-  // if (shouldRedirect){
-  //   return <Redirect to={redirect} />
-  // }
-
 
   return(
     <div className="form narrow-form" id="new-topic-form">
@@ -100,10 +56,10 @@ const PostForm = (props) => {
         <label>
           New Post
           <textarea
-            name="post"
+            name="content"
             rows="15"
             onChange={handleFieldChange}
-            value={newPost.post}
+            value={newPost.content}
           />
         </label>
 

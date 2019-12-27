@@ -8,7 +8,7 @@ const TopicForm = (props) => {
   const[shouldRedirect, setShouldRedirect] = useState(false)
   const[newTopic, setNewTopic] = useState({
     title: "",
-    firstpost: ""
+    content: ""
   })
 
     let categoryId = props.match.params.id
@@ -24,7 +24,7 @@ const TopicForm = (props) => {
     event.preventDefault()
     setNewTopic({
       title: "",
-      firstpost: ""
+      content: ""
     })
     setErrors({})
   }
@@ -52,13 +52,13 @@ const TopicForm = (props) => {
 
     let payload = {
       title:newTopic.title,
-      firstpost:newTopic.firstpost
+      post:{ content:newTopic.content}
     }
 
     addNewTopic(payload)
     setNewTopic({
       title: "",
-      firstpost: ""
+      content: ""
     })
   }
 
@@ -91,7 +91,7 @@ const TopicForm = (props) => {
     .catch((error) => {console.error("error in fetch")
     })
   }
-  const redirect = `/categories/${categoryId}`
+  const redirect = `/categories/${categoryId}/`
   if (shouldRedirect){
     return <Redirect to={redirect} />
   }
@@ -114,10 +114,10 @@ const TopicForm = (props) => {
         <label>
           Topic First Post
           <textarea
-            name="firstpost"
+            name="content"
             rows="20"
             onChange={handleFieldChange}
-            value={newTopic.firstpost}
+            value={newTopic.content}
           />
         </label>
 

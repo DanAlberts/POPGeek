@@ -11,8 +11,7 @@ class Api::V1::TopicsController < ApiController
     
     topic = Topic.new(topic_params)
     topic.category_id = params[:category_id]
-
-    post = Post.new(content: post_params, topic_id: topic.id)
+    post = Post.new(post_params)
     post.user_id = current_user.id
     if topic.save
       post.topic = topic
@@ -31,6 +30,6 @@ class Api::V1::TopicsController < ApiController
   end
 
   def post_params
-    params.permit(:firstpost)
+    params.require(:post).permit(:content)
   end
 end

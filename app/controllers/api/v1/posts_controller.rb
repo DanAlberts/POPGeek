@@ -12,17 +12,17 @@ class Api::V1::PostsController < ApiController
     topic = Topic.find(params[:topic_id])
     topic.category_id = params[:category_id]
 
-    post = Post.new(content: post_params, topic_id: topic.id)
+    post = Post.new(post_params)
     post.user_id = current_user.id
-
+    post.topic = topic
     if post.save
-      render json: post
+      render json: topic
     else
       render json: {status: "error"}
     end
   end
 
   def post_params
-    params.permit(:post)
+    params.permit(:content)
   end
 end
