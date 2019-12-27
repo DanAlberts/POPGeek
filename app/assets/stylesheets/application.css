@@ -17,29 +17,57 @@
  */
 
 body {
-  background-color: rgb(61, 19, 61);
-  color: white;
+  background-color: #F4FAFF;
+  color: #08090A;
 }
 .category-title {
-  background-color: rgb(65, 63, 63);
-  border: 1px solid rgb(2, 2, 2);
-  border-radius: 3px;
-  color: rgb(252, 252, 250);
+  background-color: #5DFDCB;
+  border: 2px solid #8789C0;
+  border-radius: 4px;
+  color:#08090A;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 4px;
   padding-left: 5px;
 }
 .board-title {
-  background-color: rgb(92, 71, 92);
-  border: 1px solid rgb(2, 2, 2);
-  border-radius: 3px;
+  background-color: #7CC6FE;
+  border: 2px solid #8789C0;
+  border-radius: 4px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 2px;
 }
 .b-title {
-  background-color: rgb(70, 54, 70);
-  border: 1px solid rgb(2, 2, 2);
-  border-radius: 3px;
+  background-color: #7CC6FE;
+  border: 2px solid #8789C0;
+  border-radius: 4px;
+}
+
+.top-bar{
+  background-color: #8789C0;
+  color: #08090A;
+}
+.title a:link, .title a:visited {
+  color: white;
+}
+.ctitle a:link, .ctitle a:visited {
+  color: #8789C0;
+}
+
+.post{
+  background-color: #7CC6FE;
+  border: 2px solid #8789C0;
+  border-radius: 4px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.post-text{
+  background-color: #F4FAFF;
+  color: #08090A;
+  border: 2px solid #8789C0;
 }
