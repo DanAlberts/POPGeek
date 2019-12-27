@@ -1,4 +1,4 @@
-class Api::V1::TopicSerializer < ActiveModel::Serializer
+class Api::V1::TopicShowSerializer < ActiveModel::Serializer
   attributes :id, :title
 
   # belongs_to :category
@@ -16,10 +16,3 @@ class Api::V1::TopicSerializer < ActiveModel::Serializer
   #     }
   # end
 end
-
-# class Api::V1::TopicSerializer < ActiveModel::Serializer
-#   attributes :id, :title, :category_id
-  
-#   belongs_to :category
-#   has_many :posts
-# end

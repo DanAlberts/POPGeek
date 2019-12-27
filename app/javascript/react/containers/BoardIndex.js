@@ -18,8 +18,8 @@ const BoardIndex = (props) => {
     })
     .then(response => response.json())
     .then(boardBody => {
-      setBoards(boardBody)
-      setCurrentUserId(boardBody.scope[0].id)
+      setBoards(boardBody.boards)
+      // setCurrentUserId(boardBody.scope[0].id)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])

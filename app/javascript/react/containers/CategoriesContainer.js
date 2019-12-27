@@ -17,11 +17,10 @@ const CategoriesContainer = (props) => {
     })
     .then(response => response.json())
     .then(categoriesBody => {
-      setCategories(categoriesBody)
+      setCategories(categoriesBody.categories)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
-
 
   const categoriesList = categories.map(category => {
     return(
