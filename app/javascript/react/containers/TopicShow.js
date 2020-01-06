@@ -85,7 +85,7 @@ const TopicShow = (props) => {
   return(
     <div className="index">
       {PostList}
-      <div>
+      <div className="form-css">
         <PostForm
           topicId={topicId}
           categoryId={categoryId}

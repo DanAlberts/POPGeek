@@ -26,7 +26,7 @@ const BoardIndex = (props) => {
 
     const boardList = boards.map(board => {
     return(
-      <div className="board-title">
+      <div className="board-title ctitle">
       <h2 className="b-title">{board.title}</h2>
       <CategoriesContainer
 

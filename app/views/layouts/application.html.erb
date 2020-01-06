@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <script src="/path/to/tinymce.min.js"></script>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
 </head>
 <body>
   
-  <nav class="top-bar">
+  <nav class="top-bar title">
     <h1><a href="/">POPGeek</a></h1>
 
     <section class="top-bar-section">

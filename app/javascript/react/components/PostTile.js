@@ -7,7 +7,7 @@ const PostTile = (props) => {
       <h4>
         {props.user}
       </h4>
-      <p>
+      <p className="post-text">
         {props.content}
       </p>
     </div>
